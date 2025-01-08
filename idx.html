@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marko Jevtic Portfolio</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2DhKNQV/ANbY1pC9Jp12CB+AJi0KN45n9nRyJ7H2H0FP5wGKd1MiC8O47QdTH3EuQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: #1e1e1e;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav li {
+      font-size: 1rem;
+    }
+
+    nav a {
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: #1e1e1e;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ffcc00;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0.5rem auto;
+      line-height: 1.8;
+    }
+
+    .profile-pic {
+      display: block;
+      margin: 2rem auto;
+      max-width: 180px;
+      border-radius: 50%;
+    }
+
+    .content {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #skills h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 2rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .skill-card {
+      background: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.2s;
+      width: 100%;
+      max-width: 280px;
+      position: relative;
+    }
+
+    .skill-card:hover {
+      transform: scale(1.05);
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #ffcc00;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      color: #e0e0e0;
+    }
+
+    .skill-progress {
+      background: #333;
+      border-radius: 5px;
+      height: 8px;
+      margin-top: 1rem;
+      position: relative;
+    }
+
+    .skill-progress-fill {
+      background: #ffcc00;
+      height: 100%;
+      border-radius: 5px;
+      width: 0;
+    }
+
+    .skill-card:hover .skill-progress-fill {
+      width: attr(data-skill);
+    }
+
+    #projects h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 2rem;
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .project-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+    }
+
+    .project-images {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+    }
+
+    .project-images img,
+    .project video {
+      flex: 0 0 auto;
+      border-radius: 8px;
+      width: 180px;
+      height: 120px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .project-images img:hover {
+      transform: scale(1.05);
+    }
+
+    .project h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #ffcc00;
+    }
+
+    .project-description p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .project-links a {
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #1e1e1e;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      color: #e0e0e0;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #ffcc00;
+      color: #121212;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .resume-btn:hover {
+      background-color: #e6b800;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Marko Jevtic</div>
+    <nav>
+      <ul>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img
+      class="profile-pic"
+      src="profile-placeholder.jpg"
+      alt="Marko Jevtic"
+    />
+    <h1>Hello! I’m Marko Jevtic</h1>
+    <p>
+      A second-year Computer Engineering student at the University of Guelph,
+      driven by a passion for hardware-software integration. I specialize in
+      VHDL, PCB design, embedded systems, and love building innovative
+      solutions from the ground up.
+    </p>
+  </section>
+
+  <div class="content">
+    <section id="skills" data-aos="fade-up">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card" data-aos="flip-left">
+          <div class="skill-icon"><i class="fas fa-microchip"></i></div>
+          <h3>VHDL & FPGA</h3>
+          <p>
+            Designed and simulated a 4-bit ALU with overflow and carry detection 
+            using Xilinx ISE & Vivado.
+          </p>
+          <div class="skill-progress">
+            <div class="skill-progress-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="flip-right">
+          <div class="skill-icon"><i class="fas fa-drafting-compass"></i></div>
+          <h3>PCB & CAD Tools</h3>
+          <p>
+            Proficient in Altium Designer, KiCad, SolidWorks, and AutoCAD 
+            for schematics & 3D modeling.
+          </p>
+          <div class="skill-progress">
+            <div class="skill-progress-fill" style="width: 80%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="flip-left">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>Programming</h3>
+          <p>
+            Proficient in C, Java, Python (ML w/ TensorFlow Lite), and 
+            data structures.
+          </p>
+          <div class="skill-progress">
+            <div class="skill-progress-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="flip-right">
+          <div class="skill-icon"><i class="fas fa-users"></i></div>
+          <h3>Collaboration</h3>
+          <p>
+            Strong interdisciplinary teamwork, project management, 
+            and problem-solving skills.
+          </p>
+          <div class="skill-progress">
+            <div class="skill-progress-fill" style="width: 90%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" data-aos="fade-up">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project" data-aos="fade-right">
+          <h3>ESP-32 Based ML Humidifier</h3>
+          <div class="project-images">
+            <img src="ml-humidifier1.jpg" alt="ML Humidifier Image 1"/>
+            <img src="ml-humidifier2.jpg" alt="ML Humidifier Image 2"/>
+            <img src="ml-humidifier3.jpg" alt="ML Humidifier Image 3"/>
+          </div>
+          <div class="project-description">
+            <p>
+              Developed a lightweight binary classification neural network using 
+              Python and TensorFlow Lite, achieving 80%+ accuracy. 
+              Optimizes humidity levels for comfort while speeding up atomization 
+              by 50% compared to standard ultrasonic units.
+            </p>
+            <video
+              src="ml-humidifier-demo.mp4"
+              controls
+              style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"
+            ></video>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Marko411/Portfolio" target="_blank">View on GitHub</a>
+            <a href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="project" data-aos="fade-left">
+          <h3>Arduino-Based Irrigation Bot</h3>
+          <div class="project-images">
+            <img src="irrigation-bot1.jpg" alt="Irrigation Bot Image 1"/>
+            <img src="irrigation-bot2.jpg" alt="Irrigation Bot Image 2"/>
+            <img src="irrigation-bot3.jpg" alt="Irrigation Bot Image 3"/>
+          </div>
+          <div class="project-description">
+            <p>
+              Automated irrigation system designed with a custom PCB, controlling 
+              soil moisture for various plants. Tripled water throughput 
+              compared to stock components and supports up to 100 moisture 
+              level presets.
+            </p>
+            <video
+              src="irrigation-bot-demo.mp4"
+              controls
+              style="width: 100%; border-radius: 8px; margin-bottom: 1rem;"
+            ></video>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Marko411/Portfolio" target="_blank">View on GitHub</a>
+            <a href="#contact">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer id="contact" data-aos="fade-up">
+    <p>Interested in working together or have any questions?</p>
+    <p>
+      Email: <a href="mailto:mjevtic@uoguelph.ca">mjevtic@uoguelph.ca</a> |
+      Phone: <a href="tel:519-827-5781">519-827-5781</a>
+    </p>
+    <p>
+      <a href="https://www.linkedin.com/in/marko-jevtic-904b7b344" target="_blank">
+        LinkedIn
+      </a> |
+      <a href="https://Marko411.github.io/Portfolio" target="_blank">
+        Website
+      </a> |
+      <a href="https://github.com/Marko411" target="_blank">
+        GitHub
+      </a>
+    </p>
+
+    <a class="resume-btn" href="Resume.pdf" target="_blank" rel="noopener noreferrer">
+      Download My Resume
+    </a>
+
+    <p style="margin-top: 1rem;">&copy; 2025 Marko Jevtic</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  </script>
+</body>
+</html>
