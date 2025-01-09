@@ -111,11 +111,10 @@
     }
 
     .skills-grid {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
       gap: 2rem;
-      overflow-x: auto;
-      justify-content: center;
+      justify-items: center;
     }
 
     .skill-card {
@@ -124,9 +123,7 @@
       border-radius: 8px;
       text-align: center;
       transition: transform 0.2s;
-      width: 280px;
       position: relative;
-      flex: 0 0 auto;
     }
 
     .skill-card:hover {
