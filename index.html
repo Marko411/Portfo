@@ -297,6 +297,14 @@
     .close:hover {
       color: #ffcc00;
     }
+
+    .video-responsive {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -393,7 +401,7 @@
             <video
               src="Project 4.mp4"
               controls
-              style="width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;"
+              class="video-responsive"
             ></video>
           </div>
           <div class="project-links">
@@ -419,7 +427,7 @@
             <video
               src="Project 2.mp4"
               controls
-              style="width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;"
+              class="video-responsive"
             ></video>
           </div>
           <div class="project-links">
