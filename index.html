@@ -114,6 +114,27 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       justify-items: center;
+      position: relative;
+    }
+
+    .skills-grid::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background-color: #121212;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px) {
+      .skills-grid::before {
+        width: 80px;
+        height: 80px;
+      }
     }
 
     .skill-card {
@@ -125,6 +146,7 @@
       width: 100%;
       max-width: 280px;
       position: relative;
+      z-index: 2;
     }
 
     .skill-card:hover {
